@@ -1,0 +1,1407 @@
+Script started on Wed 08 Feb 2017 09:53:40 PM CST
+ww0097@cse03:~/Courses/4650_Spring$ ls
+ErrorMessage.java  java-cup-11a-runtime.jar  output_results.txt  Symbol.java  test  test1.cc  test2.cc	test3.cc  test4.cc  test5.cc  test6.cc	tinyCPP.jflex  tinyCPP_Lex.java
+ww0097@cse03:~/Courses/4650_Spring$ j[K
+ww0097@cse03:~/Courses/4650_Spring$ f[Kjflex tinyCPP.jflex 
+Reading "tinyCPP.jflex"
+Constructing NFA : 358 states in NFA
+Converting NFA to DFA : 
+...............................................................................................................................................................
+161 states before minimization, 155 states in minimized DFA
+Writing code to "tinyCPP_Lexer.java"
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ javac -cp .:java-cup-11a-runtime.jar PL0Lex.java[1PLex.java[1Pex.java[1PLex.javacLex.java[1PLex.javatLex.javaiLex.javanLex.javayLex.javaCLex.javaPLex.javaPLex.java_Lex.java
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ java -cp .:java-cup-11a-runtime.jar tinyCPP_Lex < test1.cc 
+Source Program
+--------------
+
+// test1.cc
+
+#include <iostream>
+
+using namespace std;
+
+int main () {
+  int my_list [100]; 
+  int my_list_tl [100];
+  int r; int h; int i;
+  {
+    r = 2;
+    while (r < 5) {  
+      my_list [r - 2] = r;
+      r = r + 1;
+    }  
+    h = my_list [0];
+    i = r;
+    while (i > 0) {
+      my_list_tl [i - 1] = my_list [i];
+      i = i - 1;
+    }
+  }
+  cout << h; 
+  cout << my_list_tl [0];
+  return 0;
+}
+
+List of Tokens
+--------------
+
+Symbol: (punctuation, #)
+Symbol: (keyword, include)
+Symbol: (operator, <)
+Symbol: (keyword, iostream)
+Symbol: (operator, >)
+Symbol: (keyword, using)
+Symbol: (keyword, namespace)
+Symbol: (keyword, std)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (keyword, main)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, [)
+Symbol: (integer, 100)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, my_list_tl)
+Symbol: (punctuation, [)
+Symbol: (integer, 100)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, r)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, h)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, {)
+Symbol: (identifier, r)
+Symbol: (operator, =)
+Symbol: (integer, 2)
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, r)
+Symbol: (operator, <)
+Symbol: (integer, 5)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, [)
+Symbol: (identifier, r)
+Symbol: (operator, -)
+Symbol: (integer, 2)
+Symbol: (punctuation, ])
+Symbol: (operator, =)
+Symbol: (identifier, r)
+Symbol: (punctuation, ;)
+Symbol: (identifier, r)
+Symbol: (operator, =)
+Symbol: (identifier, r)
+Symbol: (operator, +)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (identifier, h)
+Symbol: (operator, =)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, [)
+Symbol: (integer, 0)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, r)
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (operator, >)
+Symbol: (integer, 0)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (identifier, my_list_tl)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (operator, -)
+Symbol: (integer, 1)
+Symbol: (punctuation, ])
+Symbol: (operator, =)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, i)
+Symbol: (operator, -)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (punctuation, })
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, h)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, my_list_tl)
+Symbol: (punctuation, [)
+Symbol: (integer, 0)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ java -cp .:java-cup-11a-runtime.jar tinyCPP_Lex < test2.cc 
+Source Program
+--------------
+
+// test2.cc
+
+// This program tests non-local referencing.
+
+#include <iostream>
+
+using namespace std;
+
+int h;
+
+int area (int x, int y) {
+  int z;
+  z = 2 * (x * y + (x * h) + y * h);
+  return z;
+}
+
+
+int main () {
+  int a; int b; int s;
+  {
+    cin >> a;
+    cin >> b;
+    cin >> h;
+    s = area (a, b);
+  }
+  cout << s;
+  return 0;
+}
+List of Tokens
+--------------
+
+Symbol: (punctuation, #)
+Symbol: (keyword, include)
+Symbol: (operator, <)
+Symbol: (keyword, iostream)
+Symbol: (operator, >)
+Symbol: (keyword, using)
+Symbol: (keyword, namespace)
+Symbol: (keyword, std)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, h)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, area)
+Symbol: (punctuation, ()
+Symbol: (keyword, int)
+Symbol: (identifier, x)
+Symbol: (punctuation, ,)
+Symbol: (keyword, int)
+Symbol: (identifier, y)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, z)
+Symbol: (punctuation, ;)
+Symbol: (identifier, z)
+Symbol: (operator, =)
+Symbol: (integer, 2)
+Symbol: (operator, *)
+Symbol: (punctuation, ()
+Symbol: (identifier, x)
+Symbol: (operator, *)
+Symbol: (identifier, y)
+Symbol: (operator, +)
+Symbol: (punctuation, ()
+Symbol: (identifier, x)
+Symbol: (operator, *)
+Symbol: (identifier, h)
+Symbol: (punctuation, ))
+Symbol: (operator, +)
+Symbol: (identifier, y)
+Symbol: (operator, *)
+Symbol: (identifier, h)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (identifier, z)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, int)
+Symbol: (keyword, main)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, a)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, b)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, s)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, {)
+Symbol: (keyword, cin)
+Symbol: (operator, >>)
+Symbol: (identifier, a)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cin)
+Symbol: (operator, >>)
+Symbol: (identifier, b)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cin)
+Symbol: (operator, >>)
+Symbol: (identifier, h)
+Symbol: (punctuation, ;)
+Symbol: (identifier, s)
+Symbol: (operator, =)
+Symbol: (identifier, area)
+Symbol: (punctuation, ()
+Symbol: (identifier, a)
+Symbol: (punctuation, ,)
+Symbol: (identifier, b)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, s)
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+
+ww0097@cse03:~/Courses/4650_Spring$ java -cp .:java-cup-11a-runtime.jar tinyCPP_Lex < test[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ java -cp .:java-cup-11a-runtime.jar tinyCPP_Lex < test3.cc 
+Source Program
+--------------
+
+// test3.cc
+
+// This program tests recursive functions.
+
+#include <iostream>
+
+using namespace std;
+
+int facto (int x) {
+  int s;
+  if (x == 1)
+    s = 1;
+  else
+    s = x * facto (x - 1);
+  return s;
+}
+
+int main () {
+  int i; int fac;
+  {
+    cin >> i;
+    fac = facto (i);
+  }
+  cout << fac;
+  return 0;
+}
+List of Tokens
+--------------
+
+Symbol: (punctuation, #)
+Symbol: (keyword, include)
+Symbol: (operator, <)
+Symbol: (keyword, iostream)
+Symbol: (operator, >)
+Symbol: (keyword, using)
+Symbol: (keyword, namespace)
+Symbol: (keyword, std)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, facto)
+Symbol: (punctuation, ()
+Symbol: (keyword, int)
+Symbol: (identifier, x)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, s)
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, x)
+Symbol: (operator, ==)
+Symbol: (integer, 1)
+Symbol: (punctuation, ))
+Symbol: (identifier, s)
+Symbol: (operator, =)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (keyword, else)
+Symbol: (identifier, s)
+Symbol: (operator, =)
+Symbol: (identifier, x)
+Symbol: (operator, *)
+Symbol: (identifier, facto)
+Symbol: (punctuation, ()
+Symbol: (identifier, x)
+Symbol: (operator, -)
+Symbol: (integer, 1)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (identifier, s)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, int)
+Symbol: (keyword, main)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, fac)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, {)
+Symbol: (keyword, cin)
+Symbol: (operator, >>)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (identifier, fac)
+Symbol: (operator, =)
+Symbol: (identifier, facto)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, fac)
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ java -cp .:java-cup-11a-runtime.jar tinyCPP_Lex < test4.cc 
+Source Program
+--------------
+
+// test4.cc
+
+// This program tests arrays passed as parameters.
+
+#include <iostream>
+
+using namespace std;
+
+int f (int a [100], int i) {
+  int x;
+  x = a [i];
+  a [i] = 0;
+  i = 622;
+  return x;
+}
+
+int main ()
+{
+  int b[100];
+  int i; int n;
+  n = 40;
+  i = 0;
+  while (i < 100) {
+    b [i] = i * i;
+    i = i + 1;
+  }
+  cout << n;
+  cout << f (b, n);
+  cout << n;   // n should be unchanged
+  cout << b [n]; // b [n] should be 0
+  return 0;
+}
+
+List of Tokens
+--------------
+
+Symbol: (punctuation, #)
+Symbol: (keyword, include)
+Symbol: (operator, <)
+Symbol: (keyword, iostream)
+Symbol: (operator, >)
+Symbol: (keyword, using)
+Symbol: (keyword, namespace)
+Symbol: (keyword, std)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, f)
+Symbol: (punctuation, ()
+Symbol: (keyword, int)
+Symbol: (identifier, a)
+Symbol: (punctuation, [)
+Symbol: (integer, 100)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ,)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, x)
+Symbol: (punctuation, ;)
+Symbol: (identifier, x)
+Symbol: (operator, =)
+Symbol: (identifier, a)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (identifier, a)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (integer, 622)
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (identifier, x)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, int)
+Symbol: (keyword, main)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, b)
+Symbol: (punctuation, [)
+Symbol: (integer, 100)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, n)
+Symbol: (punctuation, ;)
+Symbol: (identifier, n)
+Symbol: (operator, =)
+Symbol: (integer, 40)
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (operator, <)
+Symbol: (integer, 100)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (identifier, b)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (operator, =)
+Symbol: (identifier, i)
+Symbol: (operator, *)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, i)
+Symbol: (operator, +)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, n)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, f)
+Symbol: (punctuation, ()
+Symbol: (identifier, b)
+Symbol: (punctuation, ,)
+Symbol: (identifier, n)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, n)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, b)
+Symbol: (punctuation, [)
+Symbol: (identifier, n)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ java -cp .:java-cup-11a-runtime.jar tinyCPP_Lex < test5.cc 
+Source Program
+--------------
+
+// test5.cc
+
+// This program tests class definitions. 
+
+#include <iostream>
+
+using namespace std;
+
+class List {
+
+  public:
+
+  int length;
+  int max;
+  int list [100];
+
+  int initialize (int n) {
+    int flag;
+    int i;
+    max = 100;
+    if (n <= 0 || n > max)
+      flag = 0;
+    else 
+      flag = n;
+    return flag;
+  }
+
+  int getLength () { return length; }
+
+  int nil () { 
+    int nul;
+    if (length > 0)
+      nul = 0; 
+    else
+      nul = 1;
+    return nul;
+  }
+
+  List cons (int a) {
+    int i;
+    List cons_list;
+    cons_list . length = cons_list . initialize (length + 1);
+    if (cons_list . length > 0)  {
+      cons_list . list [0] = a;
+      i = 0;
+      while (i < length) {
+        cons_list . list [i + 1] = list [i];
+        i = i + 1;
+      }
+    }
+    return cons_list;
+  }
+
+  int head () { 
+    int head;
+    if (length == 0) 
+      head = 0;
+    else
+      head = list [0];
+    return head;
+  }
+
+  List tail () {
+    int i;
+    List tail_list;
+    i = tail_list . initialize (length - 1);
+    while (i > 0) {
+      tail_list = tail_list . cons (list [i]);
+       i = i - 1;
+    }
+    return tail_list;
+  }
+
+  int equals (List list2) {
+    int equals;
+    int i;
+    if (length != list2 . length)
+      equals = 0;
+    else {
+      equals = 1;
+      i = 0;
+      while (i < length && list [i] == list2 . list [i])
+  i = i + 1;
+      if (i < length) equals = 0;
+    }
+    return equals;
+  }
+
+  int print () {
+    int i;
+    cout << 88888;
+    i = 0;
+    while (i < length) {
+      cout << list [i];
+      i = i + 1;
+    }
+    cout << 88888;
+    return length;
+  }
+};
+
+
+int main () {
+  int i; 
+  List l1; List l2;
+  List my_list;
+  cout << (my_list . nil ());
+  i = my_list . initialize (20);
+  i = 10;
+  while (i > 0) {
+    my_list = my_list . cons (i);
+    i = i - 1;
+  }
+  i = my_list . print ();
+  if (my_list . nil ())
+    cout << 1;
+  else
+    cout << 0;
+  cout << (my_list . getLength ());
+  cout << (my_list . head ());
+  i = my_list . tail () . print ();
+  l1 = my_list . cons (0);    
+  l2 = my_list . cons (0);
+  if (l1 . equals (l2))
+    cout << 1;
+  else 
+    cout << 0;
+  if (my_list . equals (l1)) 
+    cout << 1;
+  else 
+    cout << 0;
+  return 0;
+}
+
+List of Tokens
+--------------
+
+Symbol: (punctuation, #)
+Symbol: (keyword, include)
+Symbol: (operator, <)
+Symbol: (keyword, iostream)
+Symbol: (operator, >)
+Symbol: (keyword, using)
+Symbol: (keyword, namespace)
+Symbol: (keyword, std)
+Symbol: (punctuation, ;)
+Symbol: (keyword, class)
+Symbol: (identifier, List)
+Symbol: (punctuation, {)
+Symbol: (keyword, public)
+Symbol: (operator, :)
+Symbol: (keyword, int)
+Symbol: (identifier, length)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, max)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (integer, 100)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, initialize)
+Symbol: (punctuation, ()
+Symbol: (keyword, int)
+Symbol: (identifier, n)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, flag)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (identifier, max)
+Symbol: (operator, =)
+Symbol: (integer, 100)
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, n)
+Symbol: (operator, <=)
+Symbol: (integer, 0)
+Symbol: (operator, ||)
+Symbol: (identifier, n)
+Symbol: (operator, >)
+Symbol: (identifier, max)
+Symbol: (punctuation, ))
+Symbol: (identifier, flag)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, else)
+Symbol: (identifier, flag)
+Symbol: (operator, =)
+Symbol: (identifier, n)
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (identifier, flag)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, int)
+Symbol: (identifier, getLength)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, return)
+Symbol: (identifier, length)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, int)
+Symbol: (identifier, nil)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, nul)
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, length)
+Symbol: (operator, >)
+Symbol: (integer, 0)
+Symbol: (punctuation, ))
+Symbol: (identifier, nul)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, else)
+Symbol: (identifier, nul)
+Symbol: (operator, =)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (identifier, nul)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (identifier, List)
+Symbol: (identifier, cons)
+Symbol: (punctuation, ()
+Symbol: (keyword, int)
+Symbol: (identifier, a)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (identifier, List)
+Symbol: (identifier, cons_list)
+Symbol: (punctuation, ;)
+Symbol: (identifier, cons_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, length)
+Symbol: (operator, =)
+Symbol: (identifier, cons_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, initialize)
+Symbol: (punctuation, ()
+Symbol: (identifier, length)
+Symbol: (operator, +)
+Symbol: (integer, 1)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, cons_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, length)
+Symbol: (operator, >)
+Symbol: (integer, 0)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (identifier, cons_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (integer, 0)
+Symbol: (punctuation, ])
+Symbol: (operator, =)
+Symbol: (identifier, a)
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (operator, <)
+Symbol: (identifier, length)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (identifier, cons_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (operator, +)
+Symbol: (integer, 1)
+Symbol: (punctuation, ])
+Symbol: (operator, =)
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, i)
+Symbol: (operator, +)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (punctuation, })
+Symbol: (keyword, return)
+Symbol: (identifier, cons_list)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, int)
+Symbol: (identifier, head)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, head)
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, length)
+Symbol: (operator, ==)
+Symbol: (integer, 0)
+Symbol: (punctuation, ))
+Symbol: (identifier, head)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, else)
+Symbol: (identifier, head)
+Symbol: (operator, =)
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (integer, 0)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (identifier, head)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (identifier, List)
+Symbol: (identifier, tail)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (identifier, List)
+Symbol: (identifier, tail_list)
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, tail_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, initialize)
+Symbol: (punctuation, ()
+Symbol: (identifier, length)
+Symbol: (operator, -)
+Symbol: (integer, 1)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (operator, >)
+Symbol: (integer, 0)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (identifier, tail_list)
+Symbol: (operator, =)
+Symbol: (identifier, tail_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, cons)
+Symbol: (punctuation, ()
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, i)
+Symbol: (operator, -)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, return)
+Symbol: (identifier, tail_list)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, int)
+Symbol: (identifier, equals)
+Symbol: (punctuation, ()
+Symbol: (identifier, List)
+Symbol: (identifier, list)
+Symbol: (integer, 2)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, equals)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, length)
+Symbol: (operator, !=)
+Symbol: (identifier, list)
+Symbol: (integer, 2)
+Symbol: (punctuation, .)
+Symbol: (identifier, length)
+Symbol: (punctuation, ))
+Symbol: (identifier, equals)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, else)
+Symbol: (punctuation, {)
+Symbol: (identifier, equals)
+Symbol: (operator, =)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (operator, <)
+Symbol: (identifier, length)
+Symbol: (operator, &&)
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (operator, ==)
+Symbol: (identifier, list)
+Symbol: (integer, 2)
+Symbol: (punctuation, .)
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ))
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, i)
+Symbol: (operator, +)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (operator, <)
+Symbol: (identifier, length)
+Symbol: (punctuation, ))
+Symbol: (identifier, equals)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, return)
+Symbol: (identifier, equals)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, int)
+Symbol: (identifier, print)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (integer, 88888)
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (operator, <)
+Symbol: (identifier, length)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, list)
+Symbol: (punctuation, [)
+Symbol: (identifier, i)
+Symbol: (punctuation, ])
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, i)
+Symbol: (operator, +)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (integer, 88888)
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (identifier, length)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (punctuation, })
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (keyword, main)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, i)
+Symbol: (punctuation, ;)
+Symbol: (identifier, List)
+Symbol: (identifier, l)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (identifier, List)
+Symbol: (identifier, l)
+Symbol: (integer, 2)
+Symbol: (punctuation, ;)
+Symbol: (identifier, List)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (punctuation, ()
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, nil)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, initialize)
+Symbol: (punctuation, ()
+Symbol: (integer, 20)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (integer, 10)
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (operator, >)
+Symbol: (integer, 0)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (identifier, my_list)
+Symbol: (operator, =)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, cons)
+Symbol: (punctuation, ()
+Symbol: (identifier, i)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, i)
+Symbol: (operator, -)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, print)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, nil)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, ))
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (keyword, else)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (punctuation, ()
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, getLength)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (punctuation, ()
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, head)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (identifier, i)
+Symbol: (operator, =)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, tail)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, .)
+Symbol: (identifier, print)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (identifier, l)
+Symbol: (integer, 1)
+Symbol: (operator, =)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, cons)
+Symbol: (punctuation, ()
+Symbol: (integer, 0)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (identifier, l)
+Symbol: (integer, 2)
+Symbol: (operator, =)
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, cons)
+Symbol: (punctuation, ()
+Symbol: (integer, 0)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, l)
+Symbol: (integer, 1)
+Symbol: (punctuation, .)
+Symbol: (identifier, equals)
+Symbol: (punctuation, ()
+Symbol: (identifier, l)
+Symbol: (integer, 2)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ))
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (keyword, else)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, if)
+Symbol: (punctuation, ()
+Symbol: (identifier, my_list)
+Symbol: (punctuation, .)
+Symbol: (identifier, equals)
+Symbol: (punctuation, ()
+Symbol: (identifier, l)
+Symbol: (integer, 1)
+Symbol: (punctuation, ))
+Symbol: (punctuation, ))
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (keyword, else)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ java -cp .:java-cup-11a-runtime.jar tinyCPP_Lex < test6.cc 
+Source Program
+--------------
+
+// test6.cc
+
+#include <iostream>
+
+using namespace std;
+
+int main ()
+{
+  int q; int r; int x; int y;
+  cin >> x;
+  cin >> y;
+  q = 0;
+  r = x;
+  while (r >= y) {
+    q = q + 1;
+    r = r - y;
+  }
+  cout << q;
+  cout << r;
+  return 0;
+}
+
+List of Tokens
+--------------
+
+Symbol: (punctuation, #)
+Symbol: (keyword, include)
+Symbol: (operator, <)
+Symbol: (keyword, iostream)
+Symbol: (operator, >)
+Symbol: (keyword, using)
+Symbol: (keyword, namespace)
+Symbol: (keyword, std)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (keyword, main)
+Symbol: (punctuation, ()
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (keyword, int)
+Symbol: (identifier, q)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, r)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, x)
+Symbol: (punctuation, ;)
+Symbol: (keyword, int)
+Symbol: (identifier, y)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cin)
+Symbol: (operator, >>)
+Symbol: (identifier, x)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cin)
+Symbol: (operator, >>)
+Symbol: (identifier, y)
+Symbol: (punctuation, ;)
+Symbol: (identifier, q)
+Symbol: (operator, =)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (identifier, r)
+Symbol: (operator, =)
+Symbol: (identifier, x)
+Symbol: (punctuation, ;)
+Symbol: (keyword, while)
+Symbol: (punctuation, ()
+Symbol: (identifier, r)
+Symbol: (operator, >=)
+Symbol: (identifier, y)
+Symbol: (punctuation, ))
+Symbol: (punctuation, {)
+Symbol: (identifier, q)
+Symbol: (operator, =)
+Symbol: (identifier, q)
+Symbol: (operator, +)
+Symbol: (integer, 1)
+Symbol: (punctuation, ;)
+Symbol: (identifier, r)
+Symbol: (operator, =)
+Symbol: (identifier, r)
+Symbol: (operator, -)
+Symbol: (identifier, y)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, q)
+Symbol: (punctuation, ;)
+Symbol: (keyword, cout)
+Symbol: (operator, <<)
+Symbol: (identifier, r)
+Symbol: (punctuation, ;)
+Symbol: (keyword, return)
+Symbol: (integer, 0)
+Symbol: (punctuation, ;)
+Symbol: (punctuation, })
+
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ 
+ww0097@cse03:~/Courses/4650_Spring$ exit
+exit
+
+Script done on Wed 08 Feb 2017 09:55:15 PM CST
